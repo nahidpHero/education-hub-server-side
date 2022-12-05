@@ -21,6 +21,11 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run(){
     const serviceCollection = client.db("education-hub").collection("services");
     try{
+        app.get('/services',async (req,res)=>{
+            const query={};
+            const cursor=await serviceCollection.find(query).toArray();
+            res.send(cursor)
+        })
         
 
     }
